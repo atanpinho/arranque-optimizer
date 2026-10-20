@@ -1,5 +1,6 @@
 import os
 caminho_temp = os.environ.get("TEMP")
+import customtkinter
 
 # Lista todos os arquivos que estão dentro da pasta temporária
 arquivos = os.listdir(caminho_temp)
@@ -40,6 +41,35 @@ for arquivo in arquivos:
 
 # Exibe a mensagem de sucesso na tela após o término de toda a exclusão
 print("Limpeza concluída com sucesso absoluto!")
+
+# =============================================================================
+# FASE 3: CONSTRUÇÃO DA INTERFACE GRÁFICA (TELA DESKTOP)
+# =============================================================================
+
+# Define o tema visual do aplicativo como escuro de forma obrigatória
+customtkinter.set_appearance_mode("dark")
+
+# 1. Cria a janela principal do aplicativo
+janela = customtkinter.CTk()
+
+# 2. Define o título que aparece na barra superior do programa
+janela.title("ARRANQUE - Otimizador de Windows")
+
+# 3. Define o tamanho da tela (Largura x Altura) em pixels
+janela.geometry("500x350")
+
+# Cria e posiciona o título principal centralizado no topo da tela
+titulo = customtkinter.CTkLabel(janela, text="ARRANQUE OPTIMIZER", font=("Arial", 24, "bold"))
+titulo.pack(pady=20)
+
+# Cria e posiciona o texto dinâmico que exibe os Megabytes de lixo encontrados
+texto_peso = customtkinter.CTkLabel(janela, text=f"Lixo Detectado: {round(tamanho_em_mb, 2)} MB", font=("Arial", 16))
+texto_peso.pack(pady=10)
+
+
+# 4. Inicia o motor que mantém a janela aberta na tela
+janela.mainloop()
+
 
 
 
